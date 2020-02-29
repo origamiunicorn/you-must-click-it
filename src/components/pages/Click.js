@@ -19,6 +19,66 @@ const cardColOverride = {
     columnCount: 4
 }
 
+// let imgArray = [
+//     {
+//         image: "https://www.fillmurray.com/100/100",
+//         alt: "Bill Murray.",
+//         clicked: false
+//     },
+//     {
+//         image: "https://picsum.photos/seed/picsum/100/100",
+//         alt: "Seeded Image.",
+//         clicked: false
+//     },
+//     {
+//         image: "https://picsum.photos/100/100/?blur",
+//         alt: "Blurry Photo.",
+//         clicked: false
+//     },
+//     {
+//         image: "https://picsum.photos/100/100?grayscale",
+//         alt: "Grayscale.",
+//         clicked: false
+//     }
+// ];
+
+// function shuffleImg(array) {
+//     let array2 = [];
+
+//     while (array.length !== 0) {
+//         let randomIndex = Math.floor(Math.random() * imgArray.length);
+//         array2.push(imgArray[randomIndex]);
+//         imgArray.splice(randomIndex, 1);
+//     }
+//     array = array2;
+//     return array;
+// };
+
+// console.log(imgArray);
+// console.log(shuffleImg(imgArray));
+
+
+// function shuffle(array) {
+//     for (let i = array.length - 1; i > 0; i--) {
+//         let j = Math.floor(Math.random() * (i + 1));
+//         [array[i], array[j]] = [array[j], array[i]];
+//     }
+//     return array;
+// }
+
+// function shuffleArray(array) {
+//     let i = array.length;
+//     while (i--) {
+//         const ri = Math.floor(Math.random() * (i + 1));
+//         [array[i], array[ri]] = [array[ri], array[i]];
+//     }
+//     return array;
+// }
+
+// console.log(imgArray);
+// console.log(shuffle(imgArray));
+// console.log(shuffleArray(imgArray));
+
 class Click extends React.Component {
 
     state = {
@@ -56,39 +116,6 @@ class Click extends React.Component {
                 </Container>
                 <Container>
                     <CardColumns style={cardColOverride}>
-                        <Card className="p-3">
-                            <Card.Img variant="top" src="https://www.fillmurray.com/100/100" />
-                        </Card>
-                        <Card className="p-3">
-                            <Card.Img variant="top" src="https://www.fillmurray.com/100/100" />
-                        </Card>
-                        <Card className="p-3">
-                            <Card.Img variant="top" src="https://www.fillmurray.com/100/100" />
-                        </Card>
-                        <Card className="p-3">
-                            <Card.Img variant="top" src="https://www.fillmurray.com/100/100" />
-                        </Card>
-                        <Card className="p-3">
-                            <Card.Img variant="top" src="https://www.fillmurray.com/100/100" />
-                        </Card>
-                        <Card className="p-3">
-                            <Card.Img variant="top" src="https://www.fillmurray.com/100/100" />
-                        </Card>
-                        <Card className="p-3">
-                            <Card.Img variant="top" src="https://www.fillmurray.com/100/100" />
-                        </Card>
-                        <Card className="p-3">
-                            <Card.Img variant="top" src="https://www.fillmurray.com/100/100" />
-                        </Card>
-                        <Card className="p-3">
-                            <Card.Img variant="top" src="https://www.fillmurray.com/100/100" />
-                        </Card>
-                        <Card className="p-3">
-                            <Card.Img variant="top" src="https://www.fillmurray.com/100/100" />
-                        </Card>
-                        <Card className="p-3">
-                            <Card.Img variant="top" src="https://www.fillmurray.com/100/100" />
-                        </Card>
                         <Card className="p-3">
                             <Card.Img variant="top" src="https://www.fillmurray.com/100/100" />
                         </Card>
