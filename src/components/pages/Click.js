@@ -83,6 +83,8 @@ class Click extends React.Component {
 
     state = {
         images: [],
+        clicked: [],
+        currentClick: 0,
         message: "Select any image to begin!",
         alertState: "secondary",
         score: 0,
@@ -92,7 +94,6 @@ class Click extends React.Component {
     componentDidMount() {
         let newShuffle = shuffleImages(imgArray);
         this.setState({ images: newShuffle });
-        console.log(newShuffle);
     }
 
     shuffleAll() {
@@ -102,8 +103,58 @@ class Click extends React.Component {
 
     handleClick = event => {
         event.preventDefault();
-        alert("I've been clicked!");
-        this.shuffleAll();
+        let newArray = this.state.clicked;
+        let name = event.target.name;
+        this.setState({
+            currentClick: event.target.name
+        });
+
+        function search(nameToSearch) {
+            return newArray.filter(item => {
+                return parseInt(item) === parseInt(nameToSearch);
+            })
+        };
+
+        const arrayIs = search(name);
+        const highScore = this.state.topScore;
+        const currentScore = this.state.score;
+
+        if (arrayIs.length === 0) {
+            newArray.push(parseInt(name));
+            this.setState({
+                clicked: newArray,
+                message: "Good work! Keep going!",
+                alertState: "success"
+            });
+
+            if (highScore < currentScore) {
+                this.setState({
+                    score: this.state.score + 1,
+                    topScore: this.state.score + 1
+                })
+            } else if (highScore > currentScore) {
+                this.setState({
+                    score: this.state.score + 1
+                })
+            } else {
+                this.setState({
+                    score: this.state.score + 1,
+                    topScore: this.state.score + 1
+                })
+            };
+            this.shuffleAll();
+        } else {
+            this.setState({
+                clicked: [],
+                message: "Oops! You've already selected that image.",
+                alertState: "danger",
+                score: 0
+            });
+            this.shuffleAll();
+        }
+
+
+
     }
 
     render() {
