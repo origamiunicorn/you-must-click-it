@@ -19,73 +19,91 @@ const cardColOverride = {
     columnCount: 4
 }
 
-// let imgArray = [
-//     {
-//         image: "https://www.fillmurray.com/100/100",
-//         alt: "Bill Murray.",
-//         clicked: false
-//     },
-//     {
-//         image: "https://picsum.photos/seed/picsum/100/100",
-//         alt: "Seeded Image.",
-//         clicked: false
-//     },
-//     {
-//         image: "https://picsum.photos/100/100/?blur",
-//         alt: "Blurry Photo.",
-//         clicked: false
-//     },
-//     {
-//         image: "https://picsum.photos/100/100?grayscale",
-//         alt: "Grayscale.",
-//         clicked: false
-//     }
-// ];
+let imgArray = [
+    {
+        image: "https://www.fillmurray.com/100/100",
+        alt: "Bill Murray.",
+        name: 1
+    },
+    {
+        image: "https://picsum.photos/seed/picsum/100/100",
+        alt: "Seeded Image.",
+        name: 2
+    },
+    {
+        image: "https://picsum.photos/100/100/?blur",
+        alt: "Blurry Photo.",
+        name: 3
+    },
+    {
+        image: "https://picsum.photos/100/100?grayscale",
+        alt: "Grayscale.",
+        name: 4
+    }
+];
 
-// function shuffleImg(array) {
-//     let array2 = [];
+function shuffleNum(arra1) {
+    let ctr = arra1.length;
+    let temp;
+    let index;
 
-//     while (array.length !== 0) {
-//         let randomIndex = Math.floor(Math.random() * imgArray.length);
-//         array2.push(imgArray[randomIndex]);
-//         imgArray.splice(randomIndex, 1);
-//     }
-//     array = array2;
-//     return array;
-// };
+    // While there are elements in the array
+    while (ctr > 0) {
+        // Pick a random index
+        index = Math.floor(Math.random() * ctr);
+        // Decrease ctr by 1
+        ctr--;
+        // And swap the last element with it
+        temp = arra1[ctr];
+        arra1[ctr] = arra1[index];
+        arra1[index] = temp;
+    }
+    return arra1;
+};
 
-// console.log(imgArray);
-// console.log(shuffleImg(imgArray));
+function shuffleImages(array) {
+    let foo = [];
+    let shuffledImg = [];
 
+    for (let i = 0; i <= (array.length - 1); i++) {
+        foo.push(i);
+    };
 
-// function shuffle(array) {
-//     for (let i = array.length - 1; i > 0; i--) {
-//         let j = Math.floor(Math.random() * (i + 1));
-//         [array[i], array[j]] = [array[j], array[i]];
-//     }
-//     return array;
-// }
+    let shuffleFoo = shuffleNum(foo);
 
-// function shuffleArray(array) {
-//     let i = array.length;
-//     while (i--) {
-//         const ri = Math.floor(Math.random() * (i + 1));
-//         [array[i], array[ri]] = [array[ri], array[i]];
-//     }
-//     return array;
-// }
+    for (let i = 0; i <= (shuffleFoo.length - 1); i++) {
+        shuffledImg.push(array[foo[i].valueOf()]);
+    };
+    return shuffledImg;
+};
 
-// console.log(imgArray);
-// console.log(shuffle(imgArray));
-// console.log(shuffleArray(imgArray));
+console.log(shuffleImages(imgArray));
 
 class Click extends React.Component {
 
     state = {
-        message: "Select any cow image to begin!",
+        images: [],
+        message: "Select any image to begin!",
         alertState: "secondary",
         score: 0,
         topScore: 0
+    }
+
+    componentDidMount() {
+        let newShuffle = shuffleImages(imgArray);
+        this.setState({ images: newShuffle });
+        console.log(newShuffle);
+    }
+
+    shuffleAll() {
+        let newShuffle = shuffleImages(imgArray);
+        this.setState({ images: newShuffle });
+    }
+
+    handleClick = event => {
+        event.preventDefault();
+        alert("I've been clicked!");
+        this.shuffleAll();
     }
 
     render() {
@@ -116,9 +134,20 @@ class Click extends React.Component {
                 </Container>
                 <Container>
                     <CardColumns style={cardColOverride}>
-                        <Card className="p-3">
-                            <Card.Img variant="top" src="https://www.fillmurray.com/100/100" />
-                        </Card>
+                        {this.state.images.map(image => {
+                            return (
+                                <Card className="p-3">
+                                    <Card.Img
+                                        name={image.name}
+                                        variant="top"
+                                        src={image.image}
+                                        alt={image.alt}
+                                        onClick={this.handleClick}
+                                    />
+                                </Card>
+                            )
+                        })}
+
                     </CardColumns>
                 </Container>
             </>
