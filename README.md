@@ -1,5 +1,5 @@
 # You Must Click It!
-You Must Click It! is a ReactJS app where users must select each displayed image only once. Images are displayed in random order in four columns, and shuffled after each image selection occurs. This is all part of a homework assignment for UCLA's Fullstack Web Development Coding Bootcamp (September 2019 to March 2020).
+You Must Click It! (https://origamiunicorn.github.io/you-must-click-it/) is a ReactJS app where users must select each displayed image only once. Images are displayed in random order in four columns, and shuffled after each image selection occurs. This is all part of a homework assignment for UCLA's Fullstack Web Development Coding Bootcamp (September 2019 to March 2020).
 
 ## Functionality
 The game loads displaying twelve images (or as many images are presently in the imgArray const) displayed in a shuffled order. Under the Jumbotron, but above the images, is an alert reading "Select any image to begin!" In the upper right, two buttons shown in a Button Group track the user's current Score and their Top Score. 
