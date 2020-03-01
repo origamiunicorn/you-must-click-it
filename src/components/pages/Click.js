@@ -131,8 +131,6 @@ function shuffleImages(array) {
     return shuffledImg;
 };
 
-console.log(shuffleImages(imgArray));
-
 class Click extends React.Component {
 
     state = {

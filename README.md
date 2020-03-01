@@ -1,68 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# You Must Click It!
+You Must Click It! is a ReactJS app where users must select each displayed image only once. Images are displayed in random order in four columns, and shuffled after each image selection occurs. This is all part of a homework assignment for UCLA's Fullstack Web Development Coding Bootcamp (September 2019 to March 2020).
 
-## Available Scripts
+## Functionality
+The game loads displaying twelve images (or as many images are presently in the imgArray const) displayed in a shuffled order. Under the Jumbotron, but above the images, is an alert reading "Select any image to begin!" In the upper right, two buttons shown in a Button Group track the user's current Score and their Top Score. 
 
-In the project directory, you can run:
+Once a user selects an image, the game begins tracking how many unique images the user selects in a row. Each time a unique selection is made, the alert displays as green with a new message of "Good work! Keep going!" The Score updates, along with the Top Score if the Top Score was previously equal to the Score.
 
-### `npm start`
+When an image is selected which is not unique, the alert updates to red with a message of "Oops! You've already selected that image. Try again!" At that point, the user's score is reset to 0, and the next image they select begins the game anew. The Top Score will persist until a page reload/refresh.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Building "You Must Click It!"
+The game relies on shuffling array values, tracking image properities in an array, and updating state with .setState in order to keep track of user progress.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The current version creates an array of numbers equal to one less than the length of the imgArray const, then uses the shuffleImages function in order to update the state with an array of images on component load. Each time an image is selected, the onClick points to handleClick, which compares current state, checks to see if that image's name is present in an array of clickedValues in the state, updates the score according to that pass/fail as well as shuffles the images again on pass. On a fail, the alert is updated, the score updated to 0, the array of clicked images updated to an empty array, and the game begins anew.
 
-### `npm test`
+## Future Goals
+* Pull out code into further components and otherwise dry up the code. 
+* Work on better image importing. 
+* Reduce how large the handleClick is at present.
+* Add a footer.
+* Update FavIcon.
+* Work on better mobile responsiveness (right now images get quite small, though it technically works on mobile, and more easily on tablet).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
+* React JS
+* React-Bootstrap
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Resources
+* Unsplash.com (https://unsplash.com/) for all images used on site.
