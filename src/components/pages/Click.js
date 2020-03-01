@@ -21,7 +21,6 @@ import Img11 from '../../assets/images/11.png';
 import Img12 from '../../assets/images/12.png';
 import Background from '../../assets/images/background.jpg';
 
-
 const jumboStyle = {
     color: "#ffffff",
     backgroundImage: `url(${Background})`,
